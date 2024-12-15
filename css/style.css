@@ -44,9 +44,8 @@ body{
     margin-right: 10px;
 }
 .header__nav{
-    width: 608px;
+    width: 684px;
     display: flex;
-    justify-content: space-between;
     padding: 0 10px;
 }
 .header__nav a{
@@ -55,8 +54,21 @@ body{
     font-weight: 800;
     line-height: 22px;
     color: white;
+    margin-right: 15px;
+    padding: 10px;
+    border-radius: 20px;
 }
-
+.header__nav a:hover{
+    background-color: #3a3a3a;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+.header__nav a:active{
+    background-color: #ebf30f;
+    border-radius: 20px;
+    color: #101010;
+    transition: 0.2s;
+}
 .header__buttons button{
     width: 97px;
     height: 44px;
@@ -79,7 +91,6 @@ body{
 .preview {
     position: relative;
     width: 100%;
-    /*min-height: 942px;*/
     margin: 0;
     margin-bottom: 144px;
 }
@@ -93,7 +104,6 @@ body{
     height: 100%;
     object-fit: cover;
     display: block;
-    /*padding-top: 40px;*/
 }
 .preview__head h1{
     font-size: 57px;
@@ -185,11 +195,9 @@ body{
     justify-content: space-between;
     align-items: flex-start;
     margin: 12px 12px 12px 0;
-    transition: transform 0.2s ease; /* Анимация для transform */
-
-}
-.folder__block:hover{
-    transform: translateY(-20px);
+    transition: transform 0.2s ease;
+    position: relative;
+    z-index: 3;
 }
 .folder__block h2,p{
     font-size: 26px;
@@ -197,16 +205,9 @@ body{
     font-weight: 400;
     line-height: normal;
 }
-.folder__block {
-    position: relative;
-    display: inline-block;
-}
-
 .folder__block img {
     display: block;
-    height: auto;
 }
-
 .folder__block h2,
 .folder__block p {
     position: absolute;
@@ -214,21 +215,39 @@ body{
     padding: 0;
     width: 100%;
 }
-
 .folder__block h2 {
-    top: 10px; /* Расположен сверху */
-    font-size: 24px; /* Размер шрифта заголовка */
+    top: 10px;
+    font-size: 24px;
     left: 30px;
 }
-
 .folder__block p {
-    bottom: 40px; /* Расположен снизу */
+    bottom: 40px;
     left: 30px;
     font-size: 26px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     max-width: 250px;
+    transition: 0.2s;
+}
+.folder__block:hover p{
+    transform: translateY(-80px);
+    transition: 0.2s;
+}
+.overlay {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    transition: transform 0.2s ease;
+    height: 345px;
+}
+.folder__block:hover .overlay {
+    transform: translateY(-85px);
+}
+#flower1,#flower2,#flower3{
+    z-index: -1;
 }
 /*-----------------------------------------------------------*/
 
@@ -277,31 +296,21 @@ body{
 .progress-ring__circle3,
 .progress-ring__circle4 {
     fill: none;
-    stroke: #d1d1d1; /* Цвет фона */
+    stroke: #d1d1d1;
     stroke-width: 32;
     r: 100;
     cx: 140;
     cy: 140;
-    stroke-dasharray: 628; /* Длина окружности (2 * π * r) */
-    stroke-dashoffset: 628; /* Скрыть кольцо */
+    stroke-dasharray: 628;
+    stroke-dashoffset: 628;
     transition: stroke-dashoffset 1s ease-out;
 }
 .progress-ring__circle1.active,
 .progress-ring__circle2.active,
 .progress-ring__circle3.active,
-.progress-ring__circle4.active {
-    stroke: #d4ff00; /* Цвет заполнения */
-    stroke-dashoffset: calc(628 - (628 * 91) / 100);
-}
-.progress-ring__circle2.active{
-    stroke-dashoffset: calc(628 - (628 * 56) / 100);
-}
-.progress-ring__circle3.active{
-    stroke-dashoffset: calc(628 - (628 * 35) / 100);
-}
-.progress-ring__circle4.active{
-    stroke-dashoffset: calc(628 - (628 * 9) / 100);
-}
+.progress-ring__circle4.active {stroke: #d4ff00;stroke-dashoffset: calc(628 - (628 * 91) / 100);}
+.progress-ring__circle2.active{stroke-dashoffset: calc(628 - (628 * 56) / 100);}
+.progress-ring__circle4.active{stroke-dashoffset: calc(628 - (628 * 9) / 100);}
 .progress-text {
     position: absolute;
     top: 50%;
